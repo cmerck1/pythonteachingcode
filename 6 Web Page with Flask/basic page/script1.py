@@ -16,5 +16,9 @@ def home():
 def about():
     return render_template("about.html")
 
+@app.route('/cameron/')
+def Cam():
+    return render_template("merck.html")
+
 if __name__=="__main__":
     app.run(debug=True)

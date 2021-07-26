@@ -1,7 +1,8 @@
 from tkinter import *
 from math import sqrt as sqr
-
-
+from math import sin  #inported the sin function from the tkinter library
+from math import tan #added tan
+from math import cos #added cos
 class Application(Frame):
     """
     An example of a calculator app developed using the 
@@ -74,7 +75,9 @@ class Application(Frame):
         e = e.replace("²", "**2")
         e = e.replace("^", "**")
         e = e.replace("÷", "/")
-
+        e = e.replace("Sin","sin")  #changed the sin symbol to its mathematical orientation in Tkinter
+        e = e.replace("Tan", "tan") #changed tan function to Tan word
+        e = e.replace("Cos", "cos") #changed cos function to Cos word
         try:
             ans = eval(e)
         except Exception as ex:
@@ -144,8 +147,17 @@ class Application(Frame):
         Creates the widgets to be used in the grid.
         :return: None
         """
-        self.eq_bttn = Button(self, text="=", width=20, height=3, bg="lightgrey", command=lambda: self.calculate())
+        self.eq_bttn = Button(self, text="Cameron", width=20, height=3, bg="lightgrey", command=lambda: self.add_chr('Merck'))
         self.eq_bttn.grid(row=4, column=4, columnspan=2)
+
+        self.sin_bttn = Button(self, text="sin", width=9, height=3, command=lambda: self.add_chr('sin'))   #Placed the position of the sin function and assigned the role of the button as well
+        self.sin_bttn.grid(row=1, column=6)
+
+        self.tan_bttn = Button(self, text="tan", width=9, height=3, command=lambda: self.add_chr('tan'))   #Placed the position of the tan function and assigned the role of the button as well
+        self.tan_bttn.grid(row=2, column=6)
+
+        self.cos_bttn = Button(self, text="cos", width=9, height=3, command=lambda: self.add_chr('cos'))   #Placed the position of the cos function and assigned the role of the button as well
+        self.cos_bttn.grid(row=3, column=6)
 
         self.ac_bttn = Button(self, text='CE', width=9, height=3, command=lambda: self.clear_all())
         self.ac_bttn.grid(row=1, column=4)
@@ -215,6 +227,6 @@ class Application(Frame):
 
 root = Tk()
 root.geometry()
-root.title("Exciting GUI Calculator")
+root.title("Cameron's Calc GUI Calculator")
 app = Application(root)
 root.mainloop()
